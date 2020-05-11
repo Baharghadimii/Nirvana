@@ -1,8 +1,5 @@
 <template>
-  <div class="hello">
-    <h1>{{ subj }}</h1>
-    <p>{{ msg }}</p>
-  </div>
+  <div class="dashborad"></div>
 </template>
 
 <script>
