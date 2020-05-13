@@ -1,5 +1,5 @@
 <template>
-  <div class="dashborad">
+  <div class="dashboard">
     <SearchBar />
   </div>
 </template>
@@ -14,4 +14,9 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style lang="scss">
+.dashboard {
+  height: $full;
+  width: $full;
+}
+</style>
