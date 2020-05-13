@@ -1,10 +1,10 @@
 <template>
-  <div class="search-bar">
-    <div class="search-icon">
+  <div class="search-div">
+    <div id="box" class="search-box" v-on:click="expand">
       <font-awesome-icon
         icon="search"
         size="lg"
-        style="color:#21202e;margin:0.4rem;"
+        style="color:#21202e;margin:0.6rem;float:right"
       />
     </div>
   </div>
@@ -13,17 +13,22 @@
 <script>
 export default {
   name: "SearchBar",
-  props: {}
+  props: {},
+  methods: {
+    expand: function() {
+      document.getElementById("box").className += " expanded";
+    }
+  }
 };
 </script>
 
 <style lang="scss">
-.search-bar {
+.search-div {
   width: $full;
   height: 10%;
   position: relative;
 }
-.search-icon {
+.search-box {
   top: 20%;
   left: 11%;
   width: 2.5em;
@@ -31,5 +36,11 @@ export default {
   border-radius: 50%;
   background-color: $secondary;
   position: absolute;
+  cursor: pointer;
+  transition: width 1s;
+}
+.expanded {
+  width: 10em;
+  border-radius: 20px;
 }
 </style>
