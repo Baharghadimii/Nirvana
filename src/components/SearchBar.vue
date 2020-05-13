@@ -17,11 +17,20 @@ export default {
   props: {},
   methods: {
     expand: function() {
-      document.getElementById("box").className += " expanded";
-      //handle different timing for transition
-      setTimeout(() => {
-        document.getElementById("search-input").className = "expanded-input";
-      }, 500);
+      const box = document.getElementById("box");
+      const boxClassList = box.classList;
+      const input = document.getElementById("search-input");
+      //check if the box is expanded then close it otherwise open it
+      if (boxClassList.contains("expanded")) {
+        boxClassList.remove("expanded");
+        input.classList.remove("expanded-input");
+      } else {
+        box.className += " expanded";
+        //handle different timing for transition
+        setTimeout(() => {
+          input.className = "expanded-input";
+        }, 500);
+      }
     }
   }
 };
@@ -39,11 +48,11 @@ export default {
   left: 11%;
   width: 2.5em;
   height: 2.5em;
-  border-radius: 50%;
+  border-radius: 50px;
   position: absolute;
   cursor: pointer;
   background-color: $primary;
-  transition: width 1s;
+  transition: all 1s;
 }
 #search-input {
   width: 8em;
