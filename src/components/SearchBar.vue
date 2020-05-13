@@ -5,7 +5,7 @@
       <font-awesome-icon
         icon="search"
         size="lg"
-        style="color:#2e2b3f;margin:0.6rem;float:right"
+        style="color:#3d3a49;margin:0.6rem;float:right"
       />
     </div>
   </div>
@@ -59,7 +59,7 @@ export default {
   height: 2.5em;
   background-color: transparent;
   border: none;
-  color: $secondary;
+  color: $dark-font;
   font-size: 1rem;
   font-weight: 700;
   float: left;
