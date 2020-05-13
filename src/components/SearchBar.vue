@@ -1,8 +1,9 @@
 <template>
   <div class="search-div">
-    <div id="box" class="search-box" v-on:click="expand">
-      <input id="search-input" type="text" hidden value="Search" />
+    <div id="box" class="search-box">
+      <input id="search-input" type="text" hidden placeholder="Search coin" />
       <font-awesome-icon
+        v-on:click="expand"
         icon="search"
         size="lg"
         style="color:#3d3a49;margin:0.6rem;float:right"
@@ -64,7 +65,11 @@ export default {
   font-weight: 700;
   float: left;
   padding: 0 0 1.5rem 1rem;
+  outline: none;
   transition: all 5s;
+}
+#search-input::placeholder {
+  color: $dark-font;
 }
 //after transition
 .expanded-input {
