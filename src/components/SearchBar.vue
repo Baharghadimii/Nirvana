@@ -5,7 +5,6 @@
       <font-awesome-icon
         v-on:click="expand"
         icon="search"
-        size="lg"
         style="color:#3d3a49;margin:0.6rem;float:right"
       />
     </div>
@@ -40,15 +39,15 @@ export default {
 <style lang="scss">
 .search-div {
   width: $full;
-  height: 10%;
+  height: 8%;
   position: relative;
   background-color: $secondary;
 }
 .search-box {
   top: 20%;
   left: 11%;
-  width: 2.5em;
-  height: 2.5em;
+  width: 2.1em;
+  height: 2.1em;
   border-radius: 50px;
   position: absolute;
   cursor: pointer;
@@ -61,10 +60,10 @@ export default {
   background-color: transparent;
   border: none;
   color: $dark-font;
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 700;
   float: left;
-  padding: 0 0 1.5rem 1rem;
+  padding: 0 0 2rem 1rem;
   outline: none;
   transition: all 5s;
 }
