@@ -1,24 +1,25 @@
 <template>
-  <div class="dashborad"></div>
+  <div class="dashboard">
+    <SearchBar />
+    <services />
+  </div>
 </template>
 
 <script>
+import SearchBar from "./SearchBar.vue";
+import Services from "./Services.vue";
 export default {
   name: "Dashboard",
-  props: {
-    msg: String,
-    subj: String
+  components: {
+    SearchBar,
+    Services
   }
 };
 </script>
 
-<style scoped>
-h1 {
-  margin: 40px 0 0;
-  font-size: 4rem;
-}
-p {
-  font-size: 2rem;
-  color: blue;
+<style lang="scss">
+.dashboard {
+  height: $full;
+  width: $full;
 }
 </style>
