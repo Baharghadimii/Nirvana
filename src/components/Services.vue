@@ -60,7 +60,7 @@ export default {
 
 <style lang="scss">
 .servicePanel {
-  height: $full;
+  height: 92%;
   width: 5%;
   background-color: $secondary;
   display: flex;
