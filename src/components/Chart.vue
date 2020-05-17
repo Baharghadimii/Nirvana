@@ -12,7 +12,7 @@ export default {
 
 <style lang="scss">
   .graph-container {
-    width: 95%;
+    /* width: 95%; */
     height: $full;
   }
 

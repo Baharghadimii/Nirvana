@@ -62,6 +62,7 @@ export default {
 .servicePanel {
   height: $full;
   width: 5%;
+  min-width: 80px;
   background-color: $secondary;
   display: flex;
   flex-direction: column;
