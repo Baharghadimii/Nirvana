@@ -79,7 +79,7 @@ export default {
   background-color: $dark-font;
 }
 #help {
-  margin-top: 15rem;
+  margin-top: 7rem;
 }
 .icon-holder .tooltip {
   visibility: hidden;

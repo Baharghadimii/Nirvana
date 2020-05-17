@@ -1,18 +1,25 @@
 <template>
   <div class="dashboard">
     <SearchBar />
-    <services />
+    <!-- <Services /> -->
+    <!-- <Chart /> -->
+    <MidContent />
   </div>
 </template>
 
 <script>
 import SearchBar from "./SearchBar.vue";
-import Services from "./Services.vue";
+// import Services from "./Services.vue";
+// import Chart from './Chart';
+import MidContent from "./MidContent";
+
 export default {
   name: "Dashboard",
   components: {
     SearchBar,
-    Services
+    MidContent
+    // Services,
+    // Chart
   }
 };
 </script>
