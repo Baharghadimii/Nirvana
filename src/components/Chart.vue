@@ -4,6 +4,8 @@ Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots 
 </template>
 
 <script>
+// import * as d3 from 'd3'
+
 export default {
   name: "Chart",
   props: {}
