@@ -326,8 +326,11 @@ export default {
 
 <style lang="scss">
 .graph-container {
-  /* width: 95%; */
-  height: $full;
+  width: 70%;
+  height: 70%;
+  background-color: $secondary;
+  margin: 2rem;
+  border-radius: 10px;
 }
 .upGreenArrow {
   width: 0;
@@ -395,6 +398,6 @@ export default {
 .axis text {
   font-family: "Open Sans", sans-serif;
   font-size: 11px;
-  fill: $dark-font;
+  fill: $light-font;
 }
 </style>
