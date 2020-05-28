@@ -30,7 +30,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   //this is where we use variables
-  height: $full;
+  height: 94%;
   width: $full;
   background-color: $primary;
 }

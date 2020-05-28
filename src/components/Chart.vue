@@ -388,13 +388,13 @@ export default {
 .axis path,
 .axis line {
   fill: none;
-  stroke: white;
+  stroke: $dark-font;
   shape-rendering: crispEdges;
 }
 
 .axis text {
   font-family: "Open Sans", sans-serif;
   font-size: 11px;
-  fill: white;
+  fill: $dark-font;
 }
 </style>
