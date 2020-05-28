@@ -62,6 +62,7 @@ export default {
 .servicePanel {
   height: 92%;
   width: 5%;
+  min-width: 80px;
   background-color: $secondary;
   display: flex;
   flex-direction: column;
@@ -79,7 +80,7 @@ export default {
   background-color: $dark-font;
 }
 #help {
-  margin-top: 15rem;
+  margin-top: 7rem;
 }
 .icon-holder .tooltip {
   visibility: hidden;
