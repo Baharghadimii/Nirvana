@@ -1,6 +1,5 @@
 <template>
   <div class="graph-container">
-    <h2 class="coin-title">Apple Inc. - Binance</h2>
     <svg id="container" />
   </div>
 </template>
@@ -39,9 +38,9 @@ export default {
           prices[i]["Date"] = dateFormat(prices[i]["Date"]);
         }
 
-        const margin = { top: 15, right: 65, bottom: 205, left: 50 },
+        const margin = { top: 15, right: 65, bottom: 100, left: 50 },
           w = 1000 - margin.left - margin.right,
-          h = 625 - margin.top - margin.bottom;
+          h = 500 - margin.top - margin.bottom;
 
         //connecting svg to d3 object and adding initial attributes
         let svg = d3
@@ -328,13 +327,6 @@ export default {
 
 <style lang="scss">
 .graph-container {
-  width: 70%;
-  height: 92%;
-  background-color: $secondary;
-  margin: 2rem;
-  border-radius: 10px;
-}
-#container {
   margin-top: 1rem;
 }
 .coin-title {

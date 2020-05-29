@@ -1,19 +1,19 @@
 <template>
   <div class="dashboard">
-    <SearchBar />
-    <MidContent />
+    <Services />
+    <Chart />
   </div>
 </template>
 
 <script>
-import SearchBar from "./SearchBar.vue";
-import MidContent from "./MidContent";
+import Services from "./services/index.vue";
+import Chart from "./chart/index.vue";
 
 export default {
   name: "Dashboard",
   components: {
-    SearchBar,
-    MidContent
+    Services,
+    Chart
   }
 };
 </script>
@@ -22,5 +22,7 @@ export default {
 .dashboard {
   height: $full;
   width: $full;
+  display: flex;
+  flex-direction: row;
 }
 </style>
