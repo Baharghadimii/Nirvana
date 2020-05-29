@@ -1,7 +1,7 @@
 <template>
-  <div>
-    <SnapShot />
+  <div class="edit-panel-container">
     <Edit />
+    <SnapShot />
   </div>
 </template>
 
@@ -16,3 +16,12 @@ export default {
   }
 };
 </script>
+<style lang="scss">
+.edit-panel-container {
+  width: 8%;
+  display: flex;
+  flex-direction: row;
+  float: right;
+  margin: 1rem;
+}
+</style>

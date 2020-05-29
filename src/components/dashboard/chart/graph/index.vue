@@ -329,11 +329,6 @@ export default {
 .graph-container {
   margin-top: 1rem;
 }
-.coin-title {
-  float: left;
-  margin-left: 1rem;
-  color: $light-font;
-}
 .upGreenArrow {
   width: 0;
   height: 0;
