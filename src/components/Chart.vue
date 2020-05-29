@@ -1,5 +1,6 @@
 <template>
   <div class="graph-container">
+    <h2 class="coin-title">Apple Inc. - Binance</h2>
     <svg id="container" />
   </div>
 </template>
@@ -16,6 +17,7 @@ export default {
   },
   methods: {
     generateArc() {
+      //we are going to make it to json with data from the api
       d3.csv("/data.csv").then(function(prices) {
         const months = {
           0: "Jan",
@@ -31,9 +33,9 @@ export default {
           10: "Nov",
           11: "Dec"
         };
-
-        var dateFormat = d3.timeParse("%Y-%m-%d");
-        for (var i = 0; i < prices.length; i++) {
+        //it's going to be changed based on the format of date in response from api
+        let dateFormat = d3.timeParse("%Y-%m-%d");
+        for (let i = 0; i < prices.length; i++) {
           prices[i]["Date"] = dateFormat(prices[i]["Date"]);
         }
 
@@ -41,7 +43,8 @@ export default {
           w = 1000 - margin.left - margin.right,
           h = 625 - margin.top - margin.bottom;
 
-        var svg = d3
+        //connecting svg to d3 object and adding initial attributes
+        let svg = d3
           .select("#container")
           .attr("width", w + margin.left + margin.right)
           .attr("height", h + margin.top + margin.bottom)
@@ -52,14 +55,14 @@ export default {
           );
 
         let dates = _.map(prices, "Date");
-
-        var xmin = d3.min(prices.map(r => r.Date.getTime()));
-        var xmax = d3.max(prices.map(r => r.Date.getTime()));
-        var xScale = d3
+        //handling the xAxis
+        let xmin = d3.min(prices.map(r => r.Date.getTime()));
+        let xmax = d3.max(prices.map(r => r.Date.getTime()));
+        let xScale = d3
           .scaleLinear()
           .domain([-1, dates.length])
           .range([0, w]);
-        var xDateScale = d3
+        let xDateScale = d3
           .scaleQuantize()
           .domain([0, dates.length])
           .range(dates);
@@ -68,7 +71,7 @@ export default {
           .domain(d3.range(-1, dates.length))
           .range([0, w])
           .padding(0.3);
-        var xAxis = d3
+        let xAxis = d3
           .axisBottom()
           .scale(xScale)
           .tickFormat(function(d) {
@@ -89,7 +92,6 @@ export default {
               d.getFullYear()
             );
           });
-
         svg
           .append("rect")
           .attr("id", "rect")
@@ -99,15 +101,15 @@ export default {
           .style("pointer-events", "all")
           .attr("clip-path", "url(#clip)");
 
-        var gX = svg
+        let gX = svg
           .append("g")
           .attr("class", "axis x-axis") //Assign "axis" class
           .attr("transform", "translate(0," + h + ")")
           .call(xAxis);
-
+        //wrap the text in xAxis
         function wrap(text, width) {
           text.each(function() {
-            var text = d3.select(this),
+            let text = d3.select(this),
               words = text
                 .text()
                 .split(/\s+/)
@@ -142,27 +144,27 @@ export default {
           });
         }
         gX.selectAll(".tick text").call(wrap, xBand.bandwidth());
-
-        var ymin = d3.min(prices.map(r => r.Low));
-        var ymax = d3.max(prices.map(r => r.High));
-        var yScale = d3
+        //handling yAxis
+        let ymin = d3.min(prices.map(r => r.Low));
+        let ymax = d3.max(prices.map(r => r.High));
+        let yScale = d3
           .scaleLinear()
           .domain([ymin, ymax])
           .range([h, 0])
           .nice();
-        var yAxis = d3.axisLeft().scale(yScale);
+        let yAxis = d3.axisLeft().scale(yScale);
 
-        var gY = svg
+        let gY = svg
           .append("g")
           .attr("class", "axis y-axis")
           .call(yAxis);
 
-        var chartBody = svg
+        let chartBody = svg
           .append("g")
           .attr("class", "chartBody")
           .attr("clip-path", "url(#clip)");
 
-        // draw rectangles
+        //draw rectangles(candle's real body)
         let candles = chartBody
           .selectAll(".candle")
           .data(prices)
@@ -186,7 +188,7 @@ export default {
               : "#67D26B"
           );
 
-        // draw high and low
+        //draw high and low(candle's shadow)
         let stems = chartBody
           .selectAll("g.line")
           .data(prices)
@@ -217,9 +219,9 @@ export default {
           [0, 0],
           [w, h]
         ];
-
-        var resizeTimer;
-        var zoom = d3
+        //zoom on xAxis
+        let resizeTimer;
+        let zoom = d3
           .zoom()
           .scaleExtent([1, 100])
           .translateExtent(extent)
@@ -230,7 +232,7 @@ export default {
         svg.call(zoom);
 
         function zoomed() {
-          var t = d3.event.transform;
+          let t = d3.event.transform;
           let xScaleZ = t.rescaleX(xScale);
 
           let hideTicksWithoutLabel = function() {
@@ -284,11 +286,11 @@ export default {
         }
 
         function zoomend() {
-          var t = d3.event.transform;
+          let t = d3.event.transform;
           let xScaleZ = t.rescaleX(xScale);
           clearTimeout(resizeTimer);
           resizeTimer = setTimeout(function() {
-            var xmin = new Date(xDateScale(Math.floor(xScaleZ.domain()[0])));
+            let xmin = new Date(xDateScale(Math.floor(xScaleZ.domain()[0])));
             xmax = new Date(xDateScale(Math.floor(xScaleZ.domain()[1])));
             filtered = _.filter(prices, d => d.Date >= xmin && d.Date <= xmax);
             minP = +d3.min(filtered, d => d.Low);
@@ -327,10 +329,18 @@ export default {
 <style lang="scss">
 .graph-container {
   width: 70%;
-  height: 70%;
+  height: 92%;
   background-color: $secondary;
   margin: 2rem;
   border-radius: 10px;
+}
+#container {
+  margin-top: 1rem;
+}
+.coin-title {
+  float: left;
+  margin-left: 1rem;
+  color: $light-font;
 }
 .upGreenArrow {
   width: 0;
