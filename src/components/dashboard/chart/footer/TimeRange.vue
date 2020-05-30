@@ -1,6 +1,6 @@
 <template>
   <ul class="time-list">
-    <li v-for="item in list" :key="item">{{item}}</li>
+    <li id="timerange-list" v-for="item in list" :key="item">{{item}}</li>
   </ul>
 </template>
 
@@ -20,14 +20,14 @@ export default {
   list-style: none;
   padding: 0;
 }
-li {
+#timerange-list {
   display: inline;
   color: $light-font;
   padding: 0.5rem;
   border-radius: 10px;
   cursor: pointer;
 }
-li:hover {
+#timerange-list :hover {
   background-color: $dark-font;
 }
 </style>

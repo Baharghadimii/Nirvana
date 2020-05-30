@@ -5,7 +5,7 @@
   </div>
 </template>
 <script>
-import TimeZone from "./TimeZone";
+import TimeZone from "./timezone/index";
 import TimeRange from "./TimeRange";
 export default {
   name: "ChartFooter",
