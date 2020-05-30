@@ -1,5 +1,8 @@
 import Vue from 'vue'
 import App from './App.vue'
+import Vuex from 'vuex'
+
+Vue.use(Vuex)
 
 //font-awsome setup
 import { library } from '@fortawesome/fontawesome-svg-core'
