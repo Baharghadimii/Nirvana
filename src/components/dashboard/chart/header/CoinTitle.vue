@@ -1,5 +1,5 @@
 <template>
-  <h2 class="coin-title">Apple Inc. - Binance</h2>
+  <h2 class="coin-title">BTCUSD - Binance</h2>
 </template>
 
 <style lang="scss">

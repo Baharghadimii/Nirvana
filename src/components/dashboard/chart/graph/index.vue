@@ -16,7 +16,7 @@ export default {
   },
   methods: {
     generateArc() {
-      //we are going to make it to json with data from the api
+      // we are going to make it to json with data from the api
       d3.csv("/data.csv").then(function(prices) {
         const months = {
           0: "Jan",
@@ -32,7 +32,8 @@ export default {
           10: "Nov",
           11: "Dec"
         };
-        //it's going to be changed based on the format of date in response from api
+
+        // it's going to be changed based on the format of date in response from api
         let dateFormat = d3.timeParse("%Y-%m-%d");
         for (let i = 0; i < prices.length; i++) {
           prices[i]["Date"] = dateFormat(prices[i]["Date"]);
@@ -42,7 +43,7 @@ export default {
           w = 1000 - margin.left - margin.right,
           h = 500 - margin.top - margin.bottom;
 
-        //connecting svg to d3 object and adding initial attributes
+        // connecting svg to d3 object and adding initial attributes
         let svg = d3
           .select("#container")
           .attr("width", w + margin.left + margin.right)
@@ -54,7 +55,7 @@ export default {
           );
 
         let dates = _.map(prices, "Date");
-        //handling the xAxis
+        // handling the xAxis
         let xmin = d3.min(prices.map(r => r.Date.getTime()));
         let xmax = d3.max(prices.map(r => r.Date.getTime()));
         let xScale = d3
@@ -105,7 +106,7 @@ export default {
           .attr("class", "axis x-axis") //Assign "axis" class
           .attr("transform", "translate(0," + h + ")")
           .call(xAxis);
-        //wrap the text in xAxis
+        // wrap the text in xAxis
         function wrap(text, width) {
           text.each(function() {
             let text = d3.select(this),
@@ -143,7 +144,7 @@ export default {
           });
         }
         gX.selectAll(".tick text").call(wrap, xBand.bandwidth());
-        //handling yAxis
+        // handling yAxis
         let ymin = d3.min(prices.map(r => r.Low));
         let ymax = d3.max(prices.map(r => r.High));
         let yScale = d3
@@ -163,7 +164,7 @@ export default {
           .attr("class", "chartBody")
           .attr("clip-path", "url(#clip)");
 
-        //draw rectangles(candle's real body)
+        // draw rectangles(candle's real body)
         let candles = chartBody
           .selectAll(".candle")
           .data(prices)
@@ -187,7 +188,7 @@ export default {
               : "#67D26B"
           );
 
-        //draw high and low(candle's shadow)
+        // draw high and low(candle's shadow)
         let stems = chartBody
           .selectAll("g.line")
           .data(prices)
@@ -218,7 +219,7 @@ export default {
           [0, 0],
           [w, h]
         ];
-        //zoom on xAxis
+        // zoom on xAxis
         let resizeTimer;
         let zoom = d3
           .zoom()
