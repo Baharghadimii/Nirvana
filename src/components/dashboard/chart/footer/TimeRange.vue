@@ -27,7 +27,7 @@ export default {
   border-radius: 10px;
   cursor: pointer;
 }
-#timerange-list :hover {
+#timerange-list:hover {
   background-color: $dark-font;
 }
 </style>
