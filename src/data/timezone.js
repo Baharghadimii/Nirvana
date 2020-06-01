@@ -1,7 +1,7 @@
 export default
   [
     { area: "Etc", location: "UTC" },
-    { area: "Etc", location: "Los Angeles" },
+    { area: "America", location: "Los Angeles" },
     { area: "America", location: "Vancouver" },
     { area: "America", location: "Denver" },
     { area: "America", location: "Santiago" },
@@ -23,16 +23,16 @@ export default
     { area: "Europe", location: "Madrid" },
     { area: "Europe", location: "Oslo" },
     { area: "Europe", location: "Rome" },
-    { area: "Europe", location: "Stockhome" },
+    { area: "Europe", location: "Stockholm" },
     { area: "Europe", location: "Warsaw" },
     { area: "Europe", location: "Zurich" },
     { area: "Europe", location: "Athens" },
     { area: "Europe", location: "Istanbul" },
+    { area: "Europe", location: "Moscow" },
     { area: "Europe", location: "Helsinki" },
     { area: "Asia", location: "Bahrain" },
     { area: "Asia", location: "Jerusalem" },
     { area: "Asia", location: "Kuwait" },
-    { area: "Asia", location: "Moscow" },
     { area: "Asia", location: "Qatar" },
     { area: "Asia", location: "Riyadh" },
     { area: "Asia", location: "Dubai" },
@@ -49,6 +49,5 @@ export default
     { area: "Asia", location: "Tokyo" },
     { area: "Australia", location: "Brisbane" },
     { area: "Australia", location: "Sydney" },
-    { area: "Australia", location: "Perth" },
-    { area: "Australia", location: "Tehran" }
+    { area: "Australia", location: "Perth" }
   ]

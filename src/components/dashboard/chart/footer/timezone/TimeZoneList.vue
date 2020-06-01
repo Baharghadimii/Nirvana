@@ -1,7 +1,7 @@
 <template>
   <ul class="city-list">
     <li
-      @click="getTime(city)"
+      @click="setCity(city)"
       id="city-list-item"
       v-for="(city,index) in citiesList"
       :key="index"
@@ -13,8 +13,18 @@ import timezoneList from "@/data/timezone";
 export default {
   data() {
     return {
-      citiesList: timezoneList
+      citiesList: timezoneList,
+      zone: {}
     };
+  },
+  methods: {
+    getTime(city) {
+      this.zone = city;
+    },
+    setCity(city) {
+      //passing data from child to parent
+      this.$emit("childToParent", city);
+    }
   }
 };
 </script>

@@ -1,7 +1,7 @@
 <template>
   <div class="timezone-container">
     <div v-show="dropdown" class="timezone-dropdown">
-      <TimeZoneList />
+      <TimeZoneList @childToParent="setCity" />
     </div>
     <p @click="handleClick">{{time}}({{timeZone}})</p>
   </div>
@@ -30,7 +30,7 @@ export default {
     Vue.axios
       .get("http://worldtimeapi.org/api/timezone/Etc/UTC")
       .then(response => {
-        const stringTime = response.data.utc_datetime.slice(11, 19);
+        const stringTime = response.data.datetime.slice(11, 19);
         this.time = stringTime;
         this.timeZone = "UTC";
         this.setInitialTime({ time: this.time, name: this.timeZone });
@@ -40,6 +40,17 @@ export default {
     ...mapActions(["setInitialTime"]),
     handleClick() {
       this.dropdown ? (this.dropdown = false) : (this.dropdown = true);
+    },
+    setCity(value) {
+      const location = value.location.replace(" ", "_");
+      Vue.axios
+        .get(`http://worldtimeapi.org/api/timezone/${value.area}/${location}`)
+        .then(response => {
+          const stringTime = response.data.datetime.slice(11, 19);
+          this.time = stringTime;
+          this.timeZone = value.location;
+          console.log(value);
+        });
     }
   }
 };
