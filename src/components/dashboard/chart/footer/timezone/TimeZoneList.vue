@@ -9,15 +9,12 @@
   </ul>
 </template>
 <script>
-import timezoneList from "@/assets/data/timezone";
+import timezoneList from "@/data/timezone";
 export default {
   data() {
     return {
       citiesList: timezoneList
     };
-  },
-  methods: {
-    // getTime(city) {}
   }
 };
 </script>
