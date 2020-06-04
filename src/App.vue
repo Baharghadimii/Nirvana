@@ -1,16 +1,19 @@
 <template>
   <div id="app">
+    <SearchBar />
     <Dashboard />
   </div>
 </template>
 
 <script>
-import Dashboard from "./components/Dashboard.vue";
+import Dashboard from "./components/dashboard/index.vue";
+import SearchBar from "./components/searchbar/index.vue";
 
 export default {
   name: "App",
   components: {
-    Dashboard
+    Dashboard,
+    SearchBar
   }
 };
 </script>
@@ -30,8 +33,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   //this is where we use variables
-  height: $full;
+  height: 100%;
   width: $full;
+  overflow: hidden;
   background-color: $primary;
 }
 </style>

@@ -1,27 +1,15 @@
 <template>
   <div class="servicePanel">
     <div class="icon-holder">
-      <font-awesome-icon
-        icon="list-ul"
-        style="color:#21202e;padding:0.5rem 0"
-        size="2x"
-      />
+      <font-awesome-icon icon="list-ul" style="color:#21202e;padding:0.5rem 0" size="2x" />
       <span class="tooltip">Watclist</span>
     </div>
     <div class="icon-holder">
-      <font-awesome-icon
-        icon="fire"
-        style="color:#21202e;padding:0.5rem 0"
-        size="2x"
-      />
+      <font-awesome-icon icon="fire" style="color:#21202e;padding:0.5rem 0" size="2x" />
       <span class="tooltip">Hotlist</span>
     </div>
     <div class="icon-holder">
-      <font-awesome-icon
-        icon="comments"
-        style="color:#21202e;padding:0.5rem 0"
-        size="2x"
-      />
+      <font-awesome-icon icon="comments" style="color:#21202e;padding:0.5rem 0" size="2x" />
       <span class="tooltip">Chat</span>
     </div>
     <div class="icon-holder">
@@ -33,19 +21,11 @@
       <span class="tooltip">Compare prices</span>
     </div>
     <div class="icon-holder">
-      <font-awesome-icon
-        icon="bell"
-        style="color:#21202e;padding:0.5rem 0"
-        size="2x"
-      />
+      <font-awesome-icon icon="bell" style="color:#21202e;padding:0.5rem 0" size="2x" />
       <span class="tooltip">Notification</span>
     </div>
     <div class="icon-holder" id="help">
-      <font-awesome-icon
-        icon="question-circle"
-        style="color:#21202e;padding:0.5rem 0"
-        size="2x"
-      />
+      <font-awesome-icon icon="question-circle" style="color:#21202e;padding:0.5rem 0" size="2x" />
       <span class="tooltip">Help centre</span>
     </div>
   </div>
@@ -80,7 +60,7 @@ export default {
   background-color: $dark-font;
 }
 #help {
-  margin-top: 7rem;
+  margin-top: 15rem;
 }
 .icon-holder .tooltip {
   visibility: hidden;
