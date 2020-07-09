@@ -51,7 +51,7 @@ export default {
   border-radius: 50px;
   position: absolute;
   cursor: pointer;
-  background-color: $primary;
+  background-color: $light-font;
   transition: all 1s;
 }
 #search-input {
