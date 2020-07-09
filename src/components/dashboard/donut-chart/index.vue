@@ -36,7 +36,7 @@ export default {
       var color = d3
         .scaleOrdinal()
         .domain(data)
-        .range(["#F6527D", "#FFBC2B", "#67D26B", "#4B85F9"]);
+        .range(["#fff", "#67D26A", "#F6527D", "#AEC7E8"]);
 
       // Compute the position of each group on the pie:
       var pie = d3.pie().value(function(d) {
@@ -61,7 +61,7 @@ export default {
           return color(d.data.key);
         })
         .attr("stroke", "black")
-        .style("stroke-width", "1px")
+        .style("stroke-width", "0.1px")
         .style("opacity", 0.7);
     }
   }
