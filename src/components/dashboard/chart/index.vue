@@ -25,7 +25,7 @@ export default {
   width: 70%;
   height: 85%;
   background-color: $secondary;
-  margin: 2rem;
+  margin: 2rem 1rem;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
