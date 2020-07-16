@@ -2,7 +2,10 @@
   <div class="dashboard">
     <Services />
     <Chart />
-    <DonutChart />
+    <div class="donut-list-container">
+      <DonutChart />
+      <CoinsList />
+    </div>
   </div>
 </template>
 
@@ -10,13 +13,15 @@
 import Services from "./services/index.vue";
 import Chart from "./chart/index.vue";
 import DonutChart from "./donut-chart/index";
+import CoinsList from "./coins-list/index";
 
 export default {
   name: "Dashboard",
   components: {
     Services,
     Chart,
-    DonutChart
+    DonutChart,
+    CoinsList
   }
 };
 </script>
@@ -27,5 +32,10 @@ export default {
   width: $full;
   display: flex;
   flex-direction: row;
+}
+.donut-list-container {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
 }
 </style>

@@ -84,11 +84,12 @@ export default {
 </script>
 <style lang="scss">
 .donut-container {
-  width: 20%;
+  width: 95%;
   height: 40%;
   background-color: $secondary;
   margin: 2rem 0.5rem;
   border-radius: 10px;
+  margin-bottom: 0;
 }
 .desc-container {
   width: 80%;
