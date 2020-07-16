@@ -1,6 +1,24 @@
 <template>
   <div class="donut-container">
     <div id="my_dataviz"></div>
+    <div class="desc-container">
+      <div class="window-container">
+        <span id="high">Hight:</span>
+        <span>$9114.61</span>
+      </div>
+      <div class="window-container">
+        <span id="low">Low :</span>
+        <span>$9106.39</span>
+      </div>
+      <div class="window-container">
+        <span id="open">Open:</span>
+        <span>$9113.84</span>
+      </div>
+      <div class="window-container">
+        <span id="close">Close:</span>
+        <span>$9112.09</span>
+      </div>
+    </div>
   </div>
 </template>
 <script>
@@ -36,7 +54,7 @@ export default {
       var color = d3
         .scaleOrdinal()
         .domain(data)
-        .range(["#fff", "#67D26A", "#F6527D", "#AEC7E8"]);
+        .range(["#fff", "#67D26A", "#F6527D", "#428DC2"]);
 
       // Compute the position of each group on the pie:
       var pie = d3.pie().value(function(d) {
@@ -54,15 +72,12 @@ export default {
           "d",
           d3
             .arc()
-            .innerRadius(50) // This is the size of the donut hole
+            .innerRadius(65) // This is the size of the donut hole
             .outerRadius(radius)
         )
         .attr("fill", function(d) {
           return color(d.data.key);
-        })
-        .attr("stroke", "black")
-        .style("stroke-width", "0.1px")
-        .style("opacity", 0.7);
+        });
     }
   }
 };
@@ -74,5 +89,50 @@ export default {
   background-color: $secondary;
   margin: 2rem 0.5rem;
   border-radius: 10px;
+}
+.desc-container {
+  width: 80%;
+  margin: 0 auto;
+  margin-top: -50px;
+  height: 30%;
+  color: white;
+  text-align: left;
+}
+span {
+  display: flex;
+  flex-direction: row;
+  &::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    margin-top: 6px;
+    margin-right: 10px;
+    border-radius: 50%;
+  }
+}
+#high {
+  &::before {
+    background-color: #fff;
+  }
+}
+#low {
+  &::before {
+    background-color: #67d26a;
+  }
+}
+#open {
+  &::before {
+    background-color: #f6527d;
+  }
+}
+#close {
+  &::before {
+    background-color: #428dc2;
+  }
+}
+.window-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 </style>
