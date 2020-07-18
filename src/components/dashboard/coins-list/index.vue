@@ -6,6 +6,11 @@
       <li>Morbi leo risus</li>
       <li>Porta ac consectetur ac</li>
       <li>Vestibulum at eros</li>
+      <li>Cras justo odio</li>
+      <li>Dapibus ac facilisis in</li>
+      <li>Morbi leo risus</li>
+      <li>Porta ac consectetur ac</li>
+      <li>Vestibulum at eros</li>
     </ul>
   </div>
 </template>
@@ -26,9 +31,12 @@ export default {
   color: white;
   list-style-type: none;
   text-align: left;
+  padding: 10px;
+  height: 80%;
+  overflow: scroll;
   li {
     height: 3rem;
-    border-bottom: 1px solid white;
+    border-bottom: 1px solid #797d7f;
     &::before {
       content: "";
       display: block;
