@@ -49,7 +49,6 @@ export default {
           const stringTime = response.data.datetime.slice(11, 19);
           this.time = stringTime;
           this.timeZone = value.location;
-          console.log(value);
         });
     }
   }
@@ -63,8 +62,9 @@ p {
   float: right;
   color: $light-font;
   cursor: pointer;
-  padding: 1rem 0.5rem;
+  padding: 0.5rem 0.5rem;
   margin: 0;
+  margin-top: 0.5rem;
   border-radius: 10px;
 }
 p:hover {
