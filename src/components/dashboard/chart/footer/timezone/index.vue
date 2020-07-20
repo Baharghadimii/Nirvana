@@ -49,6 +49,7 @@ export default {
           const stringTime = response.data.datetime.slice(11, 19);
           this.time = stringTime;
           this.timeZone = value.location;
+          this.dropdown = false;
         });
     }
   }
