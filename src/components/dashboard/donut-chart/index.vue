@@ -47,6 +47,12 @@ export default {
         .append("g")
         .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
+      svg
+        .append("text")
+        .attr("text-anchor", "middle")
+        .style("fill", "#fff")
+        //coin price
+        .text("$9182.00");
       // Create dummy data
       var data = { a: 9, b: 20, c: 30, d: 8 };
 
@@ -64,7 +70,7 @@ export default {
 
       // Build the pie chart: Basically, each part of the pie is a path that we build using the arc function.
       svg
-        .selectAll("whatever")
+        .selectAll("data")
         .data(data_ready)
         .enter()
         .append("path")
