@@ -1,21 +1,28 @@
 <template>
-  <li class="item-container">
-    <div class="logo-name">
-      <img
-        src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTd_tuOwUTNb8S8fB7JB1Tah0hZrLhIaZv23Q&usqp=CAU"
-      />
-      <span>BitCoin</span>
+  <li>
+    <div class="item-container" v-for="coin in coinItems" :key="coin">
+      <div class="logo-name">
+        <img :src="coin.img" />
+        <span>{{coin.name}}</span>
+      </div>
+      <span class="last-price">$12,593</span>
     </div>
-    <span class="last-price">$12,593</span>
   </li>
 </template>
 <script>
+import coinItemList from "../../../../data/coins";
 export default {
-  name: "CoinItem"
+  name: "CoinItem",
+  data() {
+    return {
+      coinItems: coinItemList,
+    };
+  },
 };
 </script>
 <style lang='scss'>
 .item-container {
+  background-color: blue;
   height: 3rem;
   border-bottom: 1px solid #797d7f;
   &::before {

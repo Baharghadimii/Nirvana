@@ -10,8 +10,8 @@ import CoinItem from "./coin-item/index";
 export default {
   name: "CoinList",
   components: {
-    CoinItem
-  }
+    CoinItem,
+  },
 };
 </script>
 <style lang="scss">
@@ -26,8 +26,7 @@ export default {
   color: white;
   list-style-type: none;
   text-align: left;
-  padding: 10px;
-  height: 80%;
+  padding: 0 10px;
   overflow: scroll;
 }
 </style>
