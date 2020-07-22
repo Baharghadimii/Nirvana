@@ -22,7 +22,6 @@ export default {
 </script>
 <style lang='scss'>
 .item-container {
-  background-color: blue;
   height: 3rem;
   border-bottom: 1px solid #797d7f;
   &::before {
