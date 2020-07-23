@@ -22,12 +22,17 @@ export default {
 </script>
 <style lang='scss'>
 .item-container {
+  padding: 4px 10px;
   height: 3rem;
   border-bottom: 1px solid #797d7f;
+  cursor: pointer;
+  &:hover {
+    background-color: $dark-font;
+  }
   &::before {
     content: "";
     display: block;
-    height: 30%;
+    height: 20%;
     width: 100%;
   }
   .logo-name {

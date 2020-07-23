@@ -27,7 +27,7 @@ export default {
   list-style-type: none;
   text-align: left;
   height: 85%;
-  padding: 10px;
+  padding: 10px 2px;
   overflow: scroll;
 }
 </style>
