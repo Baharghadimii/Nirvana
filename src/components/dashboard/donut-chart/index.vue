@@ -32,7 +32,7 @@ export default {
     generateDonut() {
       // set the dimensions and margins of the graph
       let width = 150;
-      let height = 250;
+      let height = 200;
       let margin = 0;
 
       // The radius of the pieplot is half the width or half the height (smallest one). I subtract a bit of margin.
@@ -102,14 +102,15 @@ export default {
 .desc-container {
   width: 80%;
   margin: 0 auto;
-  margin-top: -50px;
-  height: 30%;
+  margin-top: -30px;
+  height: 50%;
   color: white;
   text-align: left;
 }
 span {
   display: flex;
   flex-direction: row;
+  height: 15px;
   &::before {
     content: "";
     width: 10px;
@@ -120,28 +121,21 @@ span {
   }
 }
 #high {
-  &::before {
-    background-color: #67d26a;
-  }
+  border-left: 2px solid #67d26a;
 }
 #low {
-  &::before {
-    background-color: #f6527d;
-  }
+  border-left: 2px solid #f6527d;
 }
 #open {
-  &::before {
-    background-color: #fff;
-  }
+  border-left: 2px solid #fff;
 }
 #close {
-  &::before {
-    background-color: #428dc2;
-  }
+  border-left: 2px solid #428dc2;
 }
 .window-container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin-top: 15px;
 }
 </style>
