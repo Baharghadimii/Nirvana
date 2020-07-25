@@ -8,6 +8,8 @@
 /* eslint-disable */
 import * as d3 from "d3";
 import _ from "lodash";
+import Binance from "binance-api-node";
+const client = Binance();
 
 export default {
   name: "Chart",
@@ -17,7 +19,7 @@ export default {
   methods: {
     generateArc() {
       // we are going to make it to json with data from the api
-      d3.csv("/data.csv").then(function(prices) {
+      d3.csv("/data.csv").then(function (prices) {
         const months = {
           0: "Jan",
           1: "Feb",
@@ -30,7 +32,7 @@ export default {
           8: "Sep",
           9: "Oct",
           10: "Nov",
-          11: "Dec"
+          11: "Dec",
         };
 
         // it's going to be changed based on the format of date in response from api
@@ -56,12 +58,9 @@ export default {
 
         let dates = _.map(prices, "Date");
         // handling the xAxis
-        let xmin = d3.min(prices.map(r => r.Date.getTime()));
-        let xmax = d3.max(prices.map(r => r.Date.getTime()));
-        let xScale = d3
-          .scaleLinear()
-          .domain([-1, dates.length])
-          .range([0, w]);
+        let xmin = d3.min(prices.map((r) => r.Date.getTime()));
+        let xmax = d3.max(prices.map((r) => r.Date.getTime()));
+        let xScale = d3.scaleLinear().domain([-1, dates.length]).range([0, w]);
         let xDateScale = d3
           .scaleQuantize()
           .domain([0, dates.length])
@@ -74,7 +73,7 @@ export default {
         let xAxis = d3
           .axisBottom()
           .scale(xScale)
-          .tickFormat(function(d) {
+          .tickFormat(function (d) {
             d = dates[d];
             let hours = d.getHours();
             let minutes = (d.getMinutes() < 10 ? "0" : "") + d.getMinutes();
@@ -108,12 +107,9 @@ export default {
           .call(xAxis);
         // wrap the text in xAxis
         function wrap(text, width) {
-          text.each(function() {
+          text.each(function () {
             let text = d3.select(this),
-              words = text
-                .text()
-                .split(/\s+/)
-                .reverse(),
+              words = text.text().split(/\s+/).reverse(),
               word,
               line = [],
               lineNumber = 0,
@@ -145,19 +141,12 @@ export default {
         }
         gX.selectAll(".tick text").call(wrap, xBand.bandwidth());
         // handling yAxis
-        let ymin = d3.min(prices.map(r => r.Low));
-        let ymax = d3.max(prices.map(r => r.High));
-        let yScale = d3
-          .scaleLinear()
-          .domain([ymin, ymax])
-          .range([h, 0])
-          .nice();
+        let ymin = d3.min(prices.map((r) => r.Low));
+        let ymax = d3.max(prices.map((r) => r.High));
+        let yScale = d3.scaleLinear().domain([ymin, ymax]).range([h, 0]).nice();
         let yAxis = d3.axisLeft().scale(yScale);
 
-        let gY = svg
-          .append("g")
-          .attr("class", "axis y-axis")
-          .call(yAxis);
+        let gY = svg.append("g").attr("class", "axis y-axis").call(yAxis);
 
         let chartBody = svg
           .append("g")
@@ -172,15 +161,15 @@ export default {
           .append("rect")
           .attr("x", (d, i) => xScale(i) - xBand.bandwidth())
           .attr("class", "candle")
-          .attr("y", d => yScale(Math.max(d.Open, d.Close)))
+          .attr("y", (d) => yScale(Math.max(d.Open, d.Close)))
           .attr("width", xBand.bandwidth())
-          .attr("height", d =>
+          .attr("height", (d) =>
             d.Open === d.Close
               ? 1
               : yScale(Math.min(d.Open, d.Close)) -
                 yScale(Math.max(d.Open, d.Close))
           )
-          .attr("fill", d =>
+          .attr("fill", (d) =>
             d.Open === d.Close
               ? "silver"
               : d.Open > d.Close
@@ -197,9 +186,9 @@ export default {
           .attr("class", "stem")
           .attr("x1", (d, i) => xScale(i) - xBand.bandwidth() / 2)
           .attr("x2", (d, i) => xScale(i) - xBand.bandwidth() / 2)
-          .attr("y1", d => yScale(d.High))
-          .attr("y2", d => yScale(d.Low))
-          .attr("stroke", d =>
+          .attr("y1", (d) => yScale(d.High))
+          .attr("y2", (d) => yScale(d.Low))
+          .attr("stroke", (d) =>
             d.Open === d.Close
               ? "white"
               : d.Open > d.Close
@@ -217,7 +206,7 @@ export default {
 
         const extent = [
           [0, 0],
-          [w, h]
+          [w, h],
         ];
         // zoom on xAxis
         let resizeTimer;
@@ -235,8 +224,8 @@ export default {
           let t = d3.event.transform;
           let xScaleZ = t.rescaleX(xScale);
 
-          let hideTicksWithoutLabel = function() {
-            d3.selectAll(".xAxis .tick text").each(function(d) {
+          let hideTicksWithoutLabel = function () {
+            d3.selectAll(".xAxis .tick text").each(function (d) {
               if (this.innerHTML === "") {
                 this.parentNode.style.display = "none";
               }
@@ -289,20 +278,23 @@ export default {
           let t = d3.event.transform;
           let xScaleZ = t.rescaleX(xScale);
           clearTimeout(resizeTimer);
-          resizeTimer = setTimeout(function() {
+          resizeTimer = setTimeout(function () {
             let xmin = new Date(xDateScale(Math.floor(xScaleZ.domain()[0])));
             xmax = new Date(xDateScale(Math.floor(xScaleZ.domain()[1])));
-            filtered = _.filter(prices, d => d.Date >= xmin && d.Date <= xmax);
-            minP = +d3.min(filtered, d => d.Low);
-            maxP = +d3.max(filtered, d => d.High);
+            filtered = _.filter(
+              prices,
+              (d) => d.Date >= xmin && d.Date <= xmax
+            );
+            minP = +d3.min(filtered, (d) => d.Low);
+            maxP = +d3.max(filtered, (d) => d.High);
             buffer = Math.floor((maxP - minP) * 0.1);
 
             yScale.domain([minP - buffer, maxP + buffer]);
             candles
               .transition()
               .duration(800)
-              .attr("y", d => yScale(Math.max(d.Open, d.Close)))
-              .attr("height", d =>
+              .attr("y", (d) => yScale(Math.max(d.Open, d.Close)))
+              .attr("height", (d) =>
                 d.Open === d.Close
                   ? 1
                   : yScale(Math.min(d.Open, d.Close)) -
@@ -312,17 +304,15 @@ export default {
             stems
               .transition()
               .duration(800)
-              .attr("y1", d => yScale(d.High))
-              .attr("y2", d => yScale(d.Low));
+              .attr("y1", (d) => yScale(d.High))
+              .attr("y2", (d) => yScale(d.Low));
 
-            gY.transition()
-              .duration(800)
-              .call(d3.axisLeft().scale(yScale));
+            gY.transition().duration(800).call(d3.axisLeft().scale(yScale));
           }, 500);
         }
       });
-    }
-  }
+    },
+  },
 };
 </script>
 
