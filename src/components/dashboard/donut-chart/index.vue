@@ -63,7 +63,7 @@ export default {
         .range(["#fff", "#67D26A", "#F6527D", "#428DC2"]);
 
       // Compute the position of each group on the pie:
-      var pie = d3.pie().value(function(d) {
+      var pie = d3.pie().value(function (d) {
         return d.value;
       });
       var data_ready = pie(d3.entries(data));
@@ -78,14 +78,16 @@ export default {
           "d",
           d3
             .arc()
-            .innerRadius(65) // This is the size of the donut hole
+            .innerRadius(60) // This is the size of the donut hole
             .outerRadius(radius)
         )
-        .attr("fill", function(d) {
+        .attr("fill", function (d) {
           return color(d.data.key);
-        });
-    }
-  }
+        })
+        .attr("stroke", "#2e2b3f")
+        .style("stroke-width", "10px");
+    },
+  },
 };
 </script>
 <style lang="scss">
@@ -119,17 +121,17 @@ span {
 }
 #high {
   &::before {
-    background-color: #fff;
+    background-color: #67d26a;
   }
 }
 #low {
   &::before {
-    background-color: #67d26a;
+    background-color: #f6527d;
   }
 }
 #open {
   &::before {
-    background-color: #f6527d;
+    background-color: #fff;
   }
 }
 #close {

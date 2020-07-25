@@ -8,8 +8,6 @@
 /* eslint-disable */
 import * as d3 from "d3";
 import _ from "lodash";
-import Binance from "binance-api-node";
-const client = Binance();
 
 export default {
   name: "Chart",
