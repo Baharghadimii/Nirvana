@@ -11,6 +11,7 @@
 </template>
 <script>
 import coinItemList from "../../../../data/coins";
+
 export default {
   name: "CoinItem",
   data() {

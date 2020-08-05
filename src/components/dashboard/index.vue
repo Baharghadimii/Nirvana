@@ -14,6 +14,12 @@ import Services from "./services/index.vue";
 import Chart from "./chart/index.vue";
 import DonutChart from "./donut-chart/index";
 import CoinsList from "./coins-list/index";
+import Binance from "binance-api-node";
+
+const client2 = Binance({
+  apiKey: "CSHSdfp7EvlBKp3bdaYj8aH7TXKxw8NvR0GkDYPra04L97uQ5bVbGlYBtiMaE4mb",
+  apiSecret: "********",
+});
 
 export default {
   name: "Dashboard",
@@ -21,8 +27,17 @@ export default {
     Services,
     Chart,
     DonutChart,
-    CoinsList
-  }
+    CoinsList,
+  },
+  mounted() {
+    this.getData();
+  },
+  methods: {
+    async getData() {
+      const prices = await client2.prices();
+      console.log(parseInt(prices.BTCTUSD).toFixed(2));
+    },
+  },
 };
 </script>
 
