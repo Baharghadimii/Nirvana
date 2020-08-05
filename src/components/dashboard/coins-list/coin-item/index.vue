@@ -25,7 +25,6 @@ export default {
   padding: 4px 10px;
   margin: 10px;
   height: 3rem;
-  // border: 1px solid #797d7f;
   border-radius: 10px;
   background-color: $primary;
   cursor: pointer;

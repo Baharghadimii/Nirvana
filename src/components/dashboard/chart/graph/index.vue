@@ -8,13 +8,25 @@
 /* eslint-disable */
 import * as d3 from "d3";
 import _ from "lodash";
+import Binance from "binance-api-node";
+
+const client = Binance();
+
+const client2 = Binance({
+  apiKey: "CSHSdfp7EvlBKp3bdaYj8aH7TXKxw8NvR0GkDYPra04L97uQ5bVbGlYBtiMaE4mb",
+  apiSecret: "********",
+});
 
 export default {
   name: "Chart",
   mounted() {
     this.generateArc();
+    this.showData();
   },
   methods: {
+    async showData() {
+      console.log(await client.prices());
+    },
     generateArc() {
       // we are going to make it to json with data from the api
       d3.csv("/data.csv").then(function (prices) {
