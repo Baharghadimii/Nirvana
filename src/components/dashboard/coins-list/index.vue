@@ -28,6 +28,9 @@ export default {
   text-align: left;
   height: 85%;
   padding: 10px 2px;
-  overflow: scroll;
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 </style>
